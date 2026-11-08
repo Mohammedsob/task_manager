@@ -41,7 +41,6 @@ public class Main
             }
 
             if (choice == 1) {
-                scan.nextLine();
                 System.out.print("Task description: ");
                 String decription = scan.nextLine();
 
@@ -101,11 +100,35 @@ public class Main
                 }
 
             } else if (choice == 5) {
-                
+                int sortChoice = 0;
+                System.out.print("Sort by: 1) Priority 2) Due Date 3) Completion: ");
+                try {
+                    sortChoice = Integer.valueOf(scan.nextLine());
+
+                    if (!(choice >= 1 && choice <= 3)) {
+                        System.out.println("Error: Number is out of Range 1 to 3");
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid response. Please enter Number.");
+                }
+
+                if (sortChoice == 1) {
+                    taskManager.sortByPriority();
+                } else if (sortChoice == 2) {
+                    taskManager.sortByDueDate();
+                } else if (sortChoice == 3) {
+                    taskManager.sortByCompletion();
+                } else {
+                    System.out.println("Invalid choice.");
+                }
+
             } else if (choice == 6) {
                 
             } else if (choice == 7) {
-                
+                System.out.print("Enter search keyword: ");
+                String word = scan.nextLine();
+                printTask(taskManager.searchTask(word));
+
             } else if (choice == 8) {
                 break;
             } else {

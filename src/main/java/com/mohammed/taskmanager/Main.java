@@ -30,7 +30,7 @@ public class Main
 
             try {
 
-                choice = scan.nextInt();
+                choice = Integer.valueOf(scan.nextLine());
 
                 if (!(choice >= 1 && choice <= 8)) {
                     System.out.println("Error: Number is out of Range");
@@ -66,8 +66,50 @@ public class Main
                 taskManager.add(decription, priority, dueDate);
             } else if (choice == 2) {
                 printTask(taskManager.getTasks());
+            } else if (choice == 3) {
+                int id = 0;
+                System.out.print("Enter Task ID: ");
+                try {
+                    id = Integer.valueOf(scan.nextLine());
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid response. Please enter Number.");
+                }
+
+                boolean completed = taskManager.completeTaskById(id);
+
+                if (completed) {
+                    System.out.println("task " + id + " completed.");
+                } else {
+                    System.out.println("task " + id + " Not found");
+                }
+
+            } else if (choice == 4) {
+                int id = 0;
+                System.out.print("Enter Task ID: ");
+                try {
+                    id = Integer.valueOf(scan.nextLine());
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid response. Please enter Number.");
+                }
+
+                boolean deleted = taskManager.deleteTask(id);
+
+                if (deleted) {
+                    System.out.println("task " + id + " deleted.");
+                } else {
+                    System.out.println("task " + id + " Not found");
+                }
+
+            } else if (choice == 5) {
+                
+            } else if (choice == 6) {
+                
+            } else if (choice == 7) {
+                
             } else if (choice == 8) {
                 break;
+            } else {
+                System.out.println("Invalid Choice.");
             }
         }
         scan.close();

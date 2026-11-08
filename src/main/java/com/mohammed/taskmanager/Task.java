@@ -6,6 +6,8 @@ public enum Priority {
     HIGH, MEDIUM, LOW;
 }
 
+private static final String FORMAT = "%-4s %-25s %-10s %-12s %-10s %-10s %-10s%n"
+
 public class Task {
     
     private int id;
@@ -67,20 +69,32 @@ public class Task {
         this.dueDate = dueDate;
     }
 
-    public void makeAhabit() {
+    public void makeHabit() {
         this.isHabit = true;
         this.streak = 0;
     }
 
-    public void completed() {
+    public void isCompleted() {
         this.completed = true;
         if (this.isHabit) {
             this.streak++;
         }
     }
 
+    public static String header() {
+        return String.format(FORMAT, "ID", "Task", "Priority", "Due Date",
+                         "Status", "Type", "Streak");
+    }
+
     @Override
     public String toString() {
-        return "";
+        return String.format(FORMAT,
+            this.id,
+            this.description,
+            this.priority,
+            this.dueDate,
+            this.completed,
+            this.isHabit,
+            this.streak);
     }
 }

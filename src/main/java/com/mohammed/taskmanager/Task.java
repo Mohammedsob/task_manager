@@ -2,14 +2,10 @@ package com.mohammed.taskmanager;
 
 import java.time.LocalDate;
 
-public enum Priority {
-    HIGH, MEDIUM, LOW;
-}
-
-private static final String FORMAT = "%-4s %-25s %-10s %-12s %-10s %-10s %-10s%n"
-
 public class Task {
     
+    private static final String FORMAT = "%-4s %-25s %-10s %-12s %-10s %-10s %-10s%n";
+
     private int id;
     private String description;
     private Priority priority;
@@ -33,8 +29,9 @@ public class Task {
         this.description = description;
         this.priority = priority;
         this.dueDate = dueDate;
-        this.completed = false;
-        this.isHabit = false;
+        this.completed = completed;
+        this.isHabit = isHabit;
+        this.streak = streak;
     }
 
     public int getId() {
@@ -93,8 +90,8 @@ public class Task {
             this.description,
             this.priority,
             this.dueDate,
-            this.completed,
-            this.isHabit,
+            this.completed ? "Done" : "Not Done",
+            this.isHabit ? "Habit" : "Task",
             this.streak);
     }
 }

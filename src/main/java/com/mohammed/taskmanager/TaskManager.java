@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.mohammed.taskmanager.Priority.Task;
-
 public class TaskManager {
 
     private ArrayList<Task> tasks;

@@ -1,6 +1,6 @@
 package com.mohammed.taskmanager;
 
-import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -79,7 +79,20 @@ public class TaskManager {
 
     public void saveTasksToFile() {
         // Implement saving tasks to a file
+        try (PrintWriter save = new PrintWriter("tasks.txt")) {
+            for (Task t : this.tasks) {
+                save.println(t.getId() + "|"
+                    + t.getDescription() + "|" +
+                    t.getPriority().ordinal() + "|" +
+                    t.getDueDate() + "|" +
+                    (t.getCompleted() ? 0 : 1) + "|" +
+                    (t.getIsHabit() ? 0 : 1) + "|" +
+                    t.getStreak());
+            }
 
+        } catch (Exception e) {
+            System.out.println("Error saving tasks to file: " + e.getMessage());
+        }
     }
 
     public boolean completeTaskById(int id) {

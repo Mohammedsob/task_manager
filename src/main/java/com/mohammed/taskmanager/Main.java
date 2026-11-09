@@ -1,6 +1,5 @@
 package com.mohammed.taskmanager;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
@@ -107,9 +106,6 @@ public class Main
                 try {
                     sortChoice = Integer.valueOf(scan.nextLine());
 
-                    if (!(choice >= 1 && choice <= 3)) {
-                        System.out.println("Error: Number is out of Range 1 to 3");
-                    }
                 } catch (InputMismatchException e) {
                     System.out.println("Invalid response. Please enter Number.");
                 }
@@ -125,14 +121,17 @@ public class Main
                 }
 
             } else if (choice == 6) {
-                
+                taskManager.saveTasksToFile();
+
             } else if (choice == 7) {
                 System.out.print("Enter search keyword: ");
                 String word = scan.nextLine();
                 printTask(taskManager.searchTask(word));
 
             } else if (choice == 8) {
+                taskManager.saveTasksToFile();
                 break;
+
             } else {
                 System.out.println("Invalid Choice.");
             }

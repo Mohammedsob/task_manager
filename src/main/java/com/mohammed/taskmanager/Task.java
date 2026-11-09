@@ -54,6 +54,10 @@ public class Task {
         return this.completed;
     }
 
+    public boolean getIsHabit() {
+        return this.isHabit;
+    }
+
     public int getStreak() {
         return this.streak;
     }

@@ -1,5 +1,6 @@
 package com.mohammed.taskmanager;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
@@ -13,6 +14,7 @@ public class Main
     {
         Scanner scan = new Scanner(System.in);
         TaskManager taskManager = new TaskManager();
+        taskManager.loadTasksFromFile();
         int choice = 0;
 
         while(true) {

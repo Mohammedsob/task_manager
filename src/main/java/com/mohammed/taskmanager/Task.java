@@ -75,7 +75,7 @@ public class Task {
         this.streak = 0;
     }
 
-    public void isCompleted() {
+    public void completed() {
         this.completed = true;
         if (this.isHabit) {
             this.streak++;

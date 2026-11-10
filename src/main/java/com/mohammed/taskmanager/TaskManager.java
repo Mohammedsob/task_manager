@@ -98,7 +98,17 @@ public class TaskManager {
     public boolean completeTaskById(int id) {
         for (Task t : this.tasks){
             if (t.getId() == id) {
-                t.isCompleted();
+                t.completed();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean makeHabitById(int id) {
+        for (Task t : this.tasks){
+            if (t.getId() == id) {
+                t.makeHabit();
                 return true;
             }
         }
@@ -165,7 +175,7 @@ public class TaskManager {
 
     public List<Task> searchTask(String word) {
         return this.tasks.stream()
-        .filter(task -> task.getDescription().contains(word))
+        .filter(task -> task.getDescription().toLowerCase().contains(word))
         .collect(Collectors.toList());
     }
 }

@@ -22,18 +22,19 @@ public class Main
             System.out.println("1. Add Tasks");
             System.out.println("2. List Tasks");
             System.out.println("3. Complete Task");
-            System.out.println("4. Delete Task");
-            System.out.println("5. Sort Task");
-            System.out.println("6. Save Task");
-            System.out.println("7. Search Task");
-            System.out.println("8. Exit");
+            System.out.println("4. Make Habit");
+            System.out.println("5. Delete Task");
+            System.out.println("6. Sort Task");
+            System.out.println("7. Save Task");
+            System.out.println("8. Search Task");
+            System.out.println("9. Exit");
             System.out.print("Choose an option: ");
 
             try {
 
                 choice = Integer.valueOf(scan.nextLine());
 
-                if (!(choice >= 1 && choice <= 8)) {
+                if (!(choice >= 1 && choice <= 9)) {
                     System.out.println("Error: Number is out of Range");
                 } 
             } catch (InputMismatchException e) {
@@ -83,7 +84,24 @@ public class Main
                     System.out.println("task " + id + " Not found");
                 }
 
-            } else if (choice == 4) {
+            }  else if (choice == 4) {
+                System.out.print("Enter Task ID: ");
+                int id = 0;
+                try {
+                    id = Integer.valueOf(scan.nextLine());
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid response. Please enter Number.");
+                }
+
+                boolean habit = taskManager.makeHabitById(id);
+
+                if (habit) {
+                    System.out.println("task " + id + " is now a habit.");
+                } else {
+                    System.out.println("task " + id + " Not found");
+                }
+
+            } else if (choice == 5) {
                 int id = 0;
                 System.out.print("Enter Task ID: ");
                 try {
@@ -100,7 +118,7 @@ public class Main
                     System.out.println("task " + id + " Not found");
                 }
 
-            } else if (choice == 5) {
+            } else if (choice == 6) {
                 int sortChoice = 0;
                 System.out.print("Sort by: 1) Priority 2) Due Date 3) Completion: ");
                 try {
@@ -120,15 +138,15 @@ public class Main
                     System.out.println("Invalid choice.");
                 }
 
-            } else if (choice == 6) {
+            } else if (choice == 7) {
                 taskManager.saveTasksToFile();
 
-            } else if (choice == 7) {
+            } else if (choice == 8) {
                 System.out.print("Enter search keyword: ");
                 String word = scan.nextLine();
                 printTask(taskManager.searchTask(word));
 
-            } else if (choice == 8) {
+            } else if (choice == 9) {
                 taskManager.saveTasksToFile();
                 break;
 
